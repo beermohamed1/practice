@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.js">
+</head>
+<body> 
+    <button id="mybu">Click Me!</button>
+ <script>
+//    Event 
+const button = document.getElementById("mybu");
+button.addEventListener("click", function() {
+alert("Button clicked!");
+}); 
+// Types of functions 
+1.named function
+2.anonymous function
+3.arrow function
+4.callback function
+5.higher order function
+6.immediately invoked function
+7.generator function
+8.factory function 
+
+// Call back function 
+function call(func){
+    let ar=10;
+    return func(ar)
+}
+function back(func){
+    let ar1=11;
+    console.log(ar1+func);    
+}
+call(back)
+// Self invoking functions 
+(function(){
+console.log('hii its IIF')
+})()
+// Higher order functions
+//two type 1 is
+function call(func){
+    let ar=10;
+    return func(ar)
+}
+function back(func){
+    let ar1=11;
+    console.log(ar1+func);    
+}
+call(back)
+//Another one is:
+function call(value){
+    return function(){
+        let ar=10;
+        return value(ar)
+    }
+}
+function back(values){
+    let ar1=11;
+    console.log(ar1+values);
+    
+}
+let result=call(back)
+result()
+// Function borrowing 
+// Call 
+function ar(city){
+ this.greet=function(){
+ return `my name is ${this.name} and my age is ${this.age} ${city}`
+
+    }
+}
+let person={name:'riyas',age:10}
+ar.call(person,'chennai')
+console.log(person.greet());
+
+// Apply 
+function ar(city){
+this.greet=function(){
+return `my name is ${this.name} and my age is ${this.age} ${city}`
+ }
+}
+let person={name:'riyas',age:10}
+ar.apply(person,['chennai'])
+console.log(person.greet());
+
+// Bind 
+function ar(city){
+this.greet=function(){
+return `my name is ${this.name} and my age is ${this.age} ${city}`
+}
+}
+let person={name:'riyas',age:10}
+let result=ar.bind(person,'chennai')
+result()
+console.log(person.greet());
+
+// Asynchronous program ing
+setTimeout(()=>console.log('hello its me'),2000)
+// Async await 
+async function checkCondition() {
+    let a = 10;
+    try {
+        if (a<7) {
+            const result = await Promise.resolve('its true');
+            console.log(result);
+        } else {
+            const result = await Promise.reject('its not true');
+            console.log(result);
+        }
+    } catch (error) {
+        console.log(error);
+    } finally {
+        console.log('its a number');
+    }
+}
+checkCondition();
+
+// Promise 
+let ar=new Promise((res,rej)=>{
+    let a=10;
+if(a>7){
+    res('its true')
+
+}else{
+    rej('its not true')
+}
+});
+
+ar.then((res)=>console.log(res))
+.catch((rej)=>console.log(rej))
+.finally(()=>console.log('its a number')
+);
+Promise.all 
+let ar = new Promise((res, rej) => {
+    let a = 10;
+    if (a > 7) {
+        res('its true');
+    } else {
+        rej('its not true');
+    }
+});
+
+let anotherPromise = new Promise((res, rej) => {
+    let b = 5;
+    if (b > 3) {
+        res('its true');
+    } else {
+        rej('its false');
+    }
+});
+
+Promise.all([ar, anotherPromise])
+    .then((results) => {
+        console.log('All promises resolved:');
+    
+    })
+    .catch((error) => {
+        console.log('One of the promises rejected:');
+        console.log(error);
+    })
+    .finally(() => {
+        console.log('Promise.all completed');
+    });
+
+//Promise methods
+promise.all
+promise.any
+promise.allSettled
+promise.race
+// Object 
+const obj={
+    key:value
+}
+
+// Prototype
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.greet = function() {
+    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+};
+
+let person1 = new Person("riyas", 10);
+
+
+console.log(person1.greet());  
+ 
+
+// Inheritance
+class Animal {
+    constructor(name) {
+        this.name = name;
+}
+
+}
+class Dog extends Animal {
+    constructor(name) {
+        super(name); 
+    }
+    speak() {
+        console.log(`${this.name} makes bark sound`);
+    }
+}
+let dog = new Dog("dog");
+dog.speak();  
+
+//confused
+Event delegation 
+ Event propagation
+ Proxy object 
+ //dont know is
+ Throttling 
+ Denouncing 
+</script>
+</body>
+</html> 
